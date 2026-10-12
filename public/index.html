@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI-MedFusion | Smart Patient Portal</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="logo">✚</span><div><strong>AI-MedFusion</strong><small>Healthcare • Appointments • AI Assistant</small></div></div>
+  <div id="accountArea"><button id="logoutBtn" class="secondary hidden">Sign out</button></div>
+</header>
+<main>
+  <section class="hero">
+    <div><p class="eyebrow">SMART PATIENT MANAGEMENT</p><h1>Healthcare, more organized.</h1><p>Book appointments, follow your token, manage reminders and ask general healthcare questions.</p></div>
+    <div class="hero-badge">AI <span>+</span> Care</div>
+  </section>
+  <section id="authPanel" class="panel auth-panel">
+    <div class="tabs"><button id="loginTab" class="tab active">Sign in</button><button id="registerTab" class="tab">Create account</button></div>
+    <form id="authForm">
+      <div id="nameWrap" class="field hidden"><label for="name">Full name</label><input id="name" autocomplete="name" maxlength="80"></div>
+      <div class="field"><label for="email">Email</label><input id="email" type="email" autocomplete="email" required></div>
+      <div class="field"><label for="password">Password</label><input id="password" type="password" minlength="8" autocomplete="current-password" required></div>
+      <button class="primary" type="submit" id="authSubmit">Sign in</button>
+      <p id="authMessage" class="message"></p>
+    </form>
+  </section>
+
+  <section id="appPanel" class="hidden">
+    <div class="welcome"><div><p class="eyebrow">PATIENT DASHBOARD</p><h2>Welcome, <span id="userName">Patient</span></h2></div><span class="pill">Demo environment</span></div>
+    <div class="dashboard">
+      <section class="panel">
+        <h3>Book an appointment</h3>
+        <form id="appointmentForm">
+          <div class="field"><label for="appointmentDate">Preferred date</label><input id="appointmentDate" type="date" required></div>
+          <div class="field"><label for="reason">Reason for visit</label><textarea id="reason" rows="3" maxlength="300" placeholder="Brief reason for appointment" required></textarea></div>
+          <button class="primary">Generate token</button><p id="appointmentMessage" class="message"></p>
+        </form>
+      </section>
+      <section class="panel">
+        <h3>Queue status</h3>
+        <div class="queue-number" id="nextToken">—</div><p class="muted">Next waiting token for selected date</p>
+        <div class="field"><label for="queueDate">Queue date</label><input id="queueDate" type="date"></div>
+        <button id="refreshQueue" class="secondary">Refresh queue</button><p id="queueMessage" class="message"></p>
+      </section>
+      <section class="panel wide">
+        <div class="section-head"><h3>My appointments</h3><button id="refreshAppointments" class="secondary">Refresh</button></div>
+        <div id="appointmentsList" class="empty">Sign in to see your appointments.</div>
+      </section>
+      <section class="panel">
+        <h3>Medicine reminder</h3>
+        <form id="reminderForm">
+          <div class="field"><label for="medicineName">Medicine name</label><input id="medicineName" maxlength="100" placeholder="As written on prescription" required></div>
+          <div class="field"><label for="instructions">Doctor's instructions (optional)</label><input id="instructions" maxlength="250" placeholder="Use your prescribed instructions"></div>
+          <div class="field"><label for="reminderTime">Reminder time</label><input id="reminderTime" type="time" required></div>
+          <button class="primary">Save reminder</button><p id="reminderMessage" class="message"></p>
+        </form>
+        <p class="note">Keep the medicine name and schedule exactly as prescribed by your clinician.</p>
+      </section>
+      <section class="panel">
+        <h3>My reminders</h3><div id="remindersList" class="empty">No reminders loaded.</div>
+        <button id="enableNotifications" class="secondary">Enable browser notifications</button><p id="notificationMessage" class="message"></p>
+      </section>
+      <section class="panel">
+        <h3>AI healthcare assistant</h3>
+        <p class="muted">For general information only, not diagnosis or treatment.</p>
+        <form id="chatForm"><div class="field"><label for="chatMessage">Ask a general question</label><textarea id="chatMessage" rows="3" maxlength="2000" placeholder="What does blood pressure mean?" required></textarea></div><button class="primary">Ask AI</button></form>
+        <div id="chatAnswer" class="answer hidden" aria-live="polite"></div>
+      </section>
+      <section class="panel">
+        <h3>Medical image description</h3>
+        <p class="muted">Educational prototype only. Do not upload identifiable patient records.</p>
+        <form id="imageForm"><div class="field"><label for="medicalImage">Choose image (JPG/PNG/WEBP, max 5 MB)</label><input id="medicalImage" type="file" accept="image/jpeg,image/png,image/webp" required></div><button class="primary">Request description</button></form>
+        <div id="imageAnswer" class="answer hidden" aria-live="polite"></div>
+      </section>
+    </div>
+  </section>
+  <p class="disclaimer"><strong>Safety notice:</strong> This is a student demonstration, not a real clinical service. AI output can be wrong. Do not use it to diagnose, change medication, or delay care. For medical concerns, consult a qualified clinician; for emergencies, contact local emergency services.</p>
+</main>
+<footer>AI-MedFusion • Mini project prototype</footer>
+<script src="/app.js"></script>
+</body>
+</html>
